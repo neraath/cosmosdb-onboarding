@@ -62,6 +62,7 @@
     <Compile Include="Stubs\StubGetAllRecords.cs" />
     <Compile Include="Stubs\StubGetSpecificRecord.cs" />
     <Compile Include="Stubs\StubInitialize.cs" />
+    <Compile Include="Stubs\StubUpdateSpecificRecord.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

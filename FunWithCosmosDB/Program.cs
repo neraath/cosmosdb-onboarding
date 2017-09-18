@@ -57,7 +57,12 @@ namespace FunWithCosmosDB
                     createRecordCommand.Execute(trialBalance);
                     break;
                 case SelectedOption.UpdateSpecificRecord:
-                    Console.WriteLine("Update specific record.");
+                    Console.Write("Specify the trial balance id to modify: ");
+                    Guid trialBalanceId = Guid.Parse(Console.ReadLine());
+                    Console.Write("What is the new engagement name? : ");
+                    string newEngagementName = Console.ReadLine();
+                    var updateRecordCommand = new StubUpdateSpecificRecord();
+                    updateRecordCommand.Execute(new UpdateSpecificRecordArgs() { Id = trialBalanceId, EngagementName = newEngagementName });
                     break;
             }
         }
