@@ -1,0 +1,32 @@
+﻿[
+  {
+    "id": "EE6DF5C0-E837-4043-AD5B-403AAD1CF8C5",
+    "Id": "EE6DF5C0-E837-4043-AD5B-403AAD1CF8C5",
+    "FirmGuid": "F598245A-FAA9-4E1F-8F4F-D0E55AF86D88",
+    "EngagementName": "Chris' Awesome Engagement"
+  },
+  {
+    "id": "7A17CA1B-F6D4-4B67-B09A-420393E82B42",
+    "Id": "7A17CA1B-F6D4-4B67-B09A-420393E82B42",
+    "FirmGuid": "55B84C34-D7C9-48E2-9B57-474F5B9728F2",
+    "EngagementName": "Audit of SDLC"
+  },
+  {
+    "id": "EC2CF6ED-C60D-458B-818A-DFED167244DF",
+    "Id": "EC2CF6ED-C60D-458B-818A-DFED167244DF",
+    "FirmGuid": "55B84C34-D7C9-48E2-9B57-474F5B9728F2",
+    "EngagementName": "SDLC Audit - 2017"
+  },
+  {
+    "id": "49F9E498-A506-473A-9B18-657CC282FAB6",
+    "Id": "49F9E498-A506-473A-9B18-657CC282FAB6",
+    "FirmGuid": "C02198E2-22AB-4427-B57A-706BEFA7EE10",
+    "EngagementName": "Microsoft SOC2 Audit"
+  },
+  {
+    "id": "47582C05-6C22-4160-A61D-2F5ED7CB0ED7",
+    "Id": "47582C05-6C22-4160-A61D-2F5ED7CB0ED7",
+    "FirmGuid": "F598245A-FAA9-4E1F-8F4F-D0E55AF86D88",
+    "EngagementName": "Wolters Kluwer Axcess Audit"
+  }
+]

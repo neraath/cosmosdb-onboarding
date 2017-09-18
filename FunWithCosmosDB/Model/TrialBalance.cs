@@ -5,7 +5,6 @@ namespace FunWithCosmosDB.Model
 {
     public class TrialBalance
     {
-        [JsonProperty(PropertyName = "id", NullValueHandling = NullValueHandling.Ignore)]
         public Guid Id { get; set; }
 
         public Guid FirmGuid { get; set; }
