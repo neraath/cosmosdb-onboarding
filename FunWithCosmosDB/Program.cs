@@ -17,6 +17,7 @@ namespace FunWithCosmosDB
         {
             Console.WriteLine("Press enter to connect to the data source.");
             Console.ReadLine();
+            Client = new StubInitialize().InitializeClient();
 
             Execute();
         }
@@ -73,7 +74,6 @@ namespace FunWithCosmosDB
         {
             try
             {
-                if (Client == null) Client = new StubInitialize().InitializeClient();
                 var selectedOption = Menu();
                 InvokeSelectedOption(selectedOption);
             }
