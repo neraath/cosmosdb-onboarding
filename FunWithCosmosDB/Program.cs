@@ -33,7 +33,12 @@ namespace FunWithCosmosDB
                     records.ToList().ForEach((record) => Console.WriteLine($"{record.EngagementName} [{record.Id}]"));
                     break;
                 case SelectedOption.GetSpecificRecord:
-                    Console.WriteLine("Get specific record");
+                    Console.Write("Please enter the Guid to get: ");
+                    Guid recordToGet = Guid.Parse(Console.ReadLine());
+                    var getSpecificRecordQuery = new StubGetSpecificRecord();
+                    var specificRecord = getSpecificRecordQuery.Query(recordToGet);
+                    if (specificRecord == null) Console.WriteLine("NO RECORDS FOUND");
+                    else Console.WriteLine($"{specificRecord.EngagementName} [{specificRecord.Id}]");
                     break;
                 case SelectedOption.CreateRecord:
                     Console.WriteLine("Create record");

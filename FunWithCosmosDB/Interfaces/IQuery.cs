@@ -7,6 +7,6 @@
 
     public interface IQuery<TArgs, TResponse>
     {
-        TResponse Query<TResponse>(TArgs args = default(TArgs));
+        TResponse Query(TArgs args = default(TArgs));
     }
 }
