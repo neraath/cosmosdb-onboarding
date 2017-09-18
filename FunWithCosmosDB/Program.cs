@@ -28,7 +28,9 @@ namespace FunWithCosmosDB
                     Environment.Exit(0);
                     break;
                 case SelectedOption.GetAllRecords:
-                    Console.WriteLine("Get all records");
+                    var getAllRecordsQuery = new StubGetAllRecords();
+                    var records = getAllRecordsQuery.Query();
+                    records.ToList().ForEach((record) => Console.WriteLine($"{record.EngagementName} [{record.Id}]"));
                     break;
                 case SelectedOption.GetSpecificRecord:
                     Console.WriteLine("Get specific record");
