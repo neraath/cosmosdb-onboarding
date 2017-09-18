@@ -1,12 +1,13 @@
 ﻿using FunWithCosmosDB.Interfaces;
 using FunWithCosmosDB.Model;
 using System;
+using System.Threading.Tasks;
 
 namespace FunWithCosmosDB.Stubs
 {
     public class StubCreateRecord : ICommand<TrialBalance>
     {
-        public void Execute(TrialBalance arguments)
+        public async Task ExecuteAsync(TrialBalance arguments)
         {
             StaticCollection.Records.Add(arguments);
             Console.ForegroundColor = ConsoleColor.DarkGreen;

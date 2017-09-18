@@ -1,9 +1,10 @@
 ﻿using Microsoft.Azure.Documents;
+using System.Threading.Tasks;
 
 namespace FunWithCosmosDB.Interfaces
 {
     public interface IInitialize
     {
-        IDocumentClient InitializeClient();
+        Task<IDocumentClient> InitializeClientAsync();
     }
 }

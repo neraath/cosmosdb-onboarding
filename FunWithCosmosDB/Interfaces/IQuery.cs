@@ -1,12 +1,14 @@
-﻿namespace FunWithCosmosDB.Interfaces
+﻿using System.Threading.Tasks;
+
+namespace FunWithCosmosDB.Interfaces
 {
     public interface IQuery<TResponse>
     {
-        TResponse Query();
+        Task<TResponse> QueryAsync();
     }
 
     public interface IQuery<TArgs, TResponse>
     {
-        TResponse Query(TArgs args = default(TArgs));
+        Task<TResponse> QueryAsync(TArgs args = default(TArgs));
     }
 }

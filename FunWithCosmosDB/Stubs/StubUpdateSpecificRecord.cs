@@ -1,7 +1,7 @@
 ﻿using FunWithCosmosDB.Interfaces;
-using FunWithCosmosDB.Model;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace FunWithCosmosDB.Stubs
 {
@@ -13,7 +13,7 @@ namespace FunWithCosmosDB.Stubs
 
     public class StubUpdateSpecificRecord : ICommand<UpdateSpecificRecordArgs>
     {
-        public void Execute(UpdateSpecificRecordArgs arguments)
+        public async Task ExecuteAsync(UpdateSpecificRecordArgs arguments)
         {
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.WriteLine($"Searching for TrialBalance {arguments.Id}");

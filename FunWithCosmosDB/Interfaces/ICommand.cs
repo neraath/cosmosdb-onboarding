@@ -1,12 +1,14 @@
-﻿namespace FunWithCosmosDB.Interfaces
+﻿using System.Threading.Tasks;
+
+namespace FunWithCosmosDB.Interfaces
 {
     public interface ICommand<TArgs>
     {
-        void Execute(TArgs arguments);
+        Task ExecuteAsync(TArgs arguments);
     }
 
     public interface ICommand<TArgs, TResponse>
     {
-        TResponse Execute(TArgs arguments);
+        Task<TResponse> ExecuteAsync(TArgs arguments);
     }
 }

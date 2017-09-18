@@ -12,17 +12,18 @@ namespace FunWithCosmosDB
     class Program
     {
         static IDocumentClient Client;
+        static Program Instance;
 
         static void Main(string[] args)
         {
             Console.WriteLine("Press enter to connect to the data source.");
             Console.ReadLine();
-            Client = new StubInitialize().InitializeClient();
-
-            Execute();
+            Client = new StubInitialize().InitializeClientAsync().Result;
+            Instance = new Program();
+            Instance.Execute().Wait();
         }
 
-        static void InvokeSelectedOption(SelectedOption option)
+        private async Task InvokeSelectedOption(SelectedOption option)
         {
             switch (option)
             {
@@ -31,14 +32,14 @@ namespace FunWithCosmosDB
                     break;
                 case SelectedOption.GetAllRecords:
                     var getAllRecordsQuery = new StubGetAllRecords();
-                    var records = getAllRecordsQuery.Query();
+                    var records = await getAllRecordsQuery.QueryAsync();
                     records.ToList().ForEach((record) => Console.WriteLine($"{record.EngagementName} [{record.Id}]"));
                     break;
                 case SelectedOption.GetSpecificRecord:
                     Console.Write("Please enter the Guid to get: ");
                     Guid recordToGet = Guid.Parse(Console.ReadLine());
                     var getSpecificRecordQuery = new StubGetSpecificRecord();
-                    var specificRecord = getSpecificRecordQuery.Query(recordToGet);
+                    var specificRecord = await getSpecificRecordQuery.QueryAsync(recordToGet);
                     if (specificRecord == null) Console.WriteLine("NO RECORDS FOUND");
                     else Console.WriteLine($"{specificRecord.EngagementName} [{specificRecord.Id}]");
                     break;
@@ -55,7 +56,7 @@ namespace FunWithCosmosDB
                         FirmGuid = firmGuid
                     };
                     var createRecordCommand = new StubCreateRecord();
-                    createRecordCommand.Execute(trialBalance);
+                    await createRecordCommand.ExecuteAsync(trialBalance);
                     break;
                 case SelectedOption.UpdateSpecificRecord:
                     Console.Write("Specify the trial balance id to modify: ");
@@ -63,19 +64,19 @@ namespace FunWithCosmosDB
                     Console.Write("What is the new engagement name? : ");
                     string newEngagementName = Console.ReadLine();
                     var updateRecordCommand = new StubUpdateSpecificRecord();
-                    updateRecordCommand.Execute(new UpdateSpecificRecordArgs() { Id = trialBalanceId, EngagementName = newEngagementName });
+                    await updateRecordCommand.ExecuteAsync(new UpdateSpecificRecordArgs() { Id = trialBalanceId, EngagementName = newEngagementName });
                     break;
             }
         }
 
         #region Boilerplate
 
-        static void Execute()
+        private async Task Execute()
         {
             try
             {
                 var selectedOption = Menu();
-                InvokeSelectedOption(selectedOption);
+                await InvokeSelectedOption(selectedOption);
             }
             catch (Exception e)
             {
@@ -85,11 +86,11 @@ namespace FunWithCosmosDB
             }
             finally
             {
-                Execute();
+                await Execute();
             }
         }
 
-        static SelectedOption Menu()
+        private SelectedOption Menu()
         {
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Please select from one of the following options:");

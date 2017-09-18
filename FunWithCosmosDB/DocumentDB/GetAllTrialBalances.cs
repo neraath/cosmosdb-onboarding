@@ -3,6 +3,7 @@ using FunWithCosmosDB.Model;
 using Microsoft.Azure.Documents;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace FunWithCosmosDB.DocumentDB
 {
@@ -15,7 +16,7 @@ namespace FunWithCosmosDB.DocumentDB
             _client = client;
         }
 
-        public IEnumerable<TrialBalance> Query()
+        public async Task<IEnumerable<TrialBalance>> QueryAsync()
         {
             throw new NotImplementedException();
         }
