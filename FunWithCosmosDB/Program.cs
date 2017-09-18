@@ -1,4 +1,5 @@
-﻿using FunWithCosmosDB.Stubs;
+﻿using FunWithCosmosDB.Model;
+using FunWithCosmosDB.Stubs;
 using Microsoft.Azure.Documents;
 using System;
 using System.Collections.Generic;
@@ -41,7 +42,19 @@ namespace FunWithCosmosDB
                     else Console.WriteLine($"{specificRecord.EngagementName} [{specificRecord.Id}]");
                     break;
                 case SelectedOption.CreateRecord:
-                    Console.WriteLine("Create record");
+                    Console.WriteLine("Please fill out the following details:");
+                    Console.Write("Engagement Name: ");
+                    string engagementName = Console.ReadLine();
+                    Console.Write("Firm Guid: ");
+                    Guid firmGuid = Guid.Parse(Console.ReadLine());
+                    var trialBalance = new TrialBalance()
+                    {
+                        Id = Guid.NewGuid(), // TODO: Allow CosmosDB to auto-generate the ID.
+                        EngagementName = engagementName,
+                        FirmGuid = firmGuid
+                    };
+                    var createRecordCommand = new StubCreateRecord();
+                    createRecordCommand.Execute(trialBalance);
                     break;
                 case SelectedOption.UpdateSpecificRecord:
                     Console.WriteLine("Update specific record.");
