@@ -52,7 +52,7 @@ At the end of this scenario, you should have initialized a connection to CosmosD
  3. Open the `InitializeDocumentDb` class and implement the CosmosDB-specific logic to initialize a connection to CosmosDB. 
  4. In the same class, implement the logic necessary to initialize a database named `chrislabz` and a collection named `trialbalances`.
  5. Open the `GetAllTrialBalances` class and implement the CosmosDB-specific logic to get all records from the `trialbalances` collection.
- 6. Run the console application and make sure you can get all TrialBalances. Initially, you should get no records. Use the CosmosDB Migration Tool to import the following JSON.
+ 6. Run the console application and make sure you can get all TrialBalances. Initially, you should get no records. Use the CosmosDB Migration Tool to import the following JSON: [trialbalances.json](FunWithCosmosDB/Model/trialbalances.json)
 
 ## Scenario 2
 At the end of this scenario, you should be able to retrieve a specific document based on Guid. As a stretch goal, you will also implement a query to retrieve all TrialBalances that match a particular string input by the user. 
@@ -103,7 +103,7 @@ capabilities.
  1. Open the `UpdateTrialBalance` class and implement CosmosDB-specific logic to update an existing record. You should throw an `ArgumentException` if the requested TrialBalance does not exist. 
  2. Run the console application and verify you can update an existing TrialBalance Engagement Name. 
  3. Modify the `UpdateTrialBalanceArgs` class and add an `ETag` property. Use `JsonIgnore` to ensure the property is not serialized. 
- 4. Modify `UpdateTrialBalance` and add options to the query to eforce `ETag` checks. Modify the console application to allow the `ETag` to be specified, and if so, force the check. Force a situation where you can get a `PreconditionsFailed` (e.g. the `ETag` is old).
+ 4. Modify `UpdateTrialBalance` and add options to the query to eforce `ETag` checks. Modify the console application to allow the `ETag` to be specified, and if so, force the check. Force a situation where you can get a `PreconditionsFailed` (e.g. the `ETag` is old). 
 
 # Supplemental Documentation
  - [.NET examples for the DocumentDB API](https://docs.microsoft.com/en-us/azure/cosmos-db/documentdb-dotnet-samples)
